@@ -5,9 +5,16 @@ import Movie from './Movie';
 
 const Posters = styled.div`
 	display: flex;
+	overflow-y: hidden;
+	overflow-x: scroll;
+	padding: 20px;
+
+	&::-webkit-scrollbar {
+		display: none;
+	}
 `;
 
-function Row({ title, fetchUrl }) {
+function Row({ title, fetchUrl,  isLargeRow }) {
 	const [movies, setMovies] = useState([]);
 
 	useEffect(() => {
@@ -23,9 +30,9 @@ function Row({ title, fetchUrl }) {
 		<div>
 			<h2>{title}</h2>
 
-			<Posters>
-				{movies.map((movie, i) => {
-					return <Movie url={movie.poster_path} key={i}/>;
+			<Posters >
+				{movies.map(movie => {
+					return <Movie url={movie.poster_path} isLargeRow={isLargeRow} key={movie.id}/>;
 				})}
 			</Posters>
 		</div>

@@ -6,7 +6,7 @@ function App() {
   return (
     <div className="App">
 		{endpoints.map((endpoint, i) => {
-			return(<Row title={endpoint.title} fetchUrl={endpoint.fetchUrl} key={i}/>)	
+			return(<Row title={endpoint.title} fetchUrl={endpoint.fetchUrl} isLargeRow={endpoint.isLargeRow} key={i}/>)	
 		})}
     </div>
   );

@@ -16,6 +16,11 @@ const Posters = styled.div`
 	}
 `;
 
+const RowTitle = styled.h2`
+	color: white;
+	margin-left: 20px;
+`;
+
 function Row({ title, fetchUrl, isLargeRow }) {
 	const [movies, setMovies] = useState([]);
 	const [trailerUrl, setTrailerUrl] = useState('');
@@ -50,8 +55,7 @@ function Row({ title, fetchUrl, isLargeRow }) {
 
 	return (
 		<div>
-			<h2>{title}</h2>
-
+			<RowTitle>{title}</RowTitle>
 			<Posters>
 				{movies.map((movie) => {
 					return (

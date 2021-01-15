@@ -2,9 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 
 const Poster = styled.img`
-	object-fit: contain;
-	width: 100%;
-	max-height: 100px;
+	width: auto;
+	height: 140px;
 	margin-right: 10px;
 	transition: transform 0.25s;
 
@@ -13,13 +12,16 @@ const Poster = styled.img`
 	}
 
 	&.large-row {
-		max-height: 250px;
+		height: 300px;
 	}
 `;
 
 function Movie({ url, isLargeRow }) {
 	return (
-			<Poster className={isLargeRow && 'large-row'} src={`${process.env.REACT_APP_IMDB_IMAGE_URL}${url}`} />
+		<Poster
+			className={isLargeRow && 'large-row'}
+			src={`${process.env.REACT_APP_IMDB_IMAGE_URL}${url}`}
+		/>
 	);
 }
 

@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import axios from 'axios';
 import Movie from './Movie';
+import YouTube from 'react-youtube';
+import movieTrailer from 'movie-trailer';
 
 const Posters = styled.div`
 	display: flex;
@@ -14,8 +16,17 @@ const Posters = styled.div`
 	}
 `;
 
-function Row({ title, fetchUrl,  isLargeRow }) {
+function Row({ title, fetchUrl, isLargeRow }) {
 	const [movies, setMovies] = useState([]);
+	const [trailerUrl, setTrailerUrl] = useState('');
+
+	const youtubeOptions = {
+		height: '390',
+		width: '100%',
+		playerVars: {
+			autoplay: 1,
+		},
+	};
 
 	useEffect(() => {
 		async function fetchMovies() {
@@ -26,15 +37,35 @@ function Row({ title, fetchUrl,  isLargeRow }) {
 		fetchMovies();
 	}, [fetchUrl]);
 
+	const playTrailer = (movie) => {
+		if(trailerUrl) {
+			setTrailerUrl('')
+		} else {
+			movieTrailer(movie?.name || '').then(url => {
+				const urlParams = new URLSearchParams( new URL(url).search);
+				setTrailerUrl(urlParams.get('v'));
+			}).catch(err => console.log(err))
+		}
+	};
+
 	return (
 		<div>
 			<h2>{title}</h2>
 
-			<Posters >
-				{movies.map(movie => {
-					return <Movie url={movie.poster_path} isLargeRow={isLargeRow} key={movie.id}/>;
+			<Posters>
+				{movies.map((movie) => {
+					return (
+						<div onClick={() => playTrailer(movie)} key={movie.id}>
+							<Movie
+								url={movie.poster_path}
+								isLargeRow={isLargeRow}
+							/>
+						</div>
+					);
 				})}
 			</Posters>
+
+			{trailerUrl && <YouTube videoId={trailerUrl} opts={youtubeOptions} />}
 		</div>
 	);
 }

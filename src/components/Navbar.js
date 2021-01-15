@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import Logo from '../assets/img/netflix-logo.png';
 import Avatar from '../assets/img/netflix-avatar.png';
@@ -13,14 +13,9 @@ const Nav = styled.div`
 	z-index: 2;
 	box-sizing: border-box;
 	transition: all 0.25s ease-in;
-	
+
 	&.black-background {
-		background-image: linear-gradient(
-			0deg,
-			transparent,
-			rgba(37, 37, 37, 0.6) 20%,
-			#111 70%
-		);
+		background-color: #111;
 	}
 `;
 
@@ -37,20 +32,22 @@ const NetflixAvatar = styled.img`
 function Navbar() {
 	const [showNavbar, setShowNavbar] = useState(false);
 
+	const handleScroll = useCallback(() => {
+		if (window.scrollY > 100) {
+			setShowNavbar(true);
+		} else {
+			setShowNavbar(false);
+		}
+	}, []);
+
 	useEffect(() => {
-		window.addEventListener('scroll', () => {
-			if(window.scrollY > 100) {
-				setShowNavbar(true);
-			} else {
-				setShowNavbar(false);
-			}
-		});
+		window.addEventListener('scroll', handleScroll);
 
 		return () => {
-			window.removeEventListener('scroll')
-		}
-	}, [])
-	
+			window.removeEventListener('scroll', handleScroll);
+		};
+	}, [handleScroll]);
+
 	return (
 		<Nav className={showNavbar && 'black-background'}>
 			<NetflixLogo src={Logo} />

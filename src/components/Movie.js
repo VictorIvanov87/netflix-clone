@@ -6,6 +6,7 @@ const Poster = styled.img`
 	height: 140px;
 	margin-right: 10px;
 	transition: transform 0.25s;
+	cursor: pointer;
 
 	&:hover {
 		transform: scale(1.1);

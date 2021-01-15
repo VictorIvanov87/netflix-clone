@@ -9,7 +9,7 @@ const Nav = styled.div`
 	position: fixed;
 	width: 100%;
 	top: 0;
-	padding: 20px;
+	padding: 20px 30px;
 	z-index: 2;
 	box-sizing: border-box;
 	transition: all 0.25s ease-in;
@@ -20,12 +20,12 @@ const Nav = styled.div`
 `;
 
 const NetflixLogo = styled.img`
-	height: 40px;
+	height: 50px;
 	object-fit: contain;
 `;
 
 const NetflixAvatar = styled.img`
-	height: 40px;
+	height: 32px;
 	object-fit: contain;
 `;
 

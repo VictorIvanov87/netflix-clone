@@ -8,15 +8,34 @@ const Header = styled.header`
 	background-position: center center;
 	color: white;
 	object-fit: contain;
-	height: 448px;
+	height: 35vw;
+	min-height: 320px;
 	padding-top: 140px;
+	position: relative;
+
+	section {
+		max-width: 420px;
+	}
 `;
 
 const Title = styled.h1`
-	font-size: 3rem;
-	font-weight: 800;
+	font-size: 4rem;
+	font-weight: 600;
 	margin-left: 30px;
-	padding-bottom: 0.3rem;
+	text-transform: uppercase;
+`;
+
+const Description = styled.h2`
+	padding: 2rem 0;
+	margin-left: 30px;
+	font-size: 1.5vw;
+	font-weight: 400;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.45);
+	line-height: normal;
+
+	@media (max-width: 800px) {
+		font-size: 12px;
+	}
 `;
 
 const ButtonsWrapper = styled.div`
@@ -24,14 +43,24 @@ const ButtonsWrapper = styled.div`
 
 	button {
 		cursor: pointer;
-		color: white;
 		outline: none;
 		border: none;
-		font-weight: 700;
-		border-radius: 0.2vw;
-		padding: 0.5rem 2rem;
+		border-radius: 4px;
+		padding: 0.8rem 2rem;
 		margin-right: 1rem;
-		background-color: rgba(51, 51, 51, 0.5);
+		font-size: 1.6rem;
+		font-weight: bold;
+		line-height: 2.4rem;
+
+		&.play-btn {
+			background-color: white;
+			color: black;
+		}
+
+		&.more-info-btn {
+			background-color: rgba(109, 109, 110, 0.7);
+			color: white;
+		}
 	}
 
 	button:hover {
@@ -41,20 +70,11 @@ const ButtonsWrapper = styled.div`
 	}
 `;
 
-const Description = styled.h2`
-	width: 45rem;
-	max-width: 360px;
-	height: 80px;
-	padding-top: 1rem;
-	margin-left: 30px;
-	font-size: 0.8rem;
-	line-height: 1.3;
-`;
-
 const Gradient = styled.div`
-	position: relative;
-	top: 8.5rem;
-	height: 7.5rem;
+	position: absolute;
+	bottom: -1px;
+	width: 100%;
+	height: 15rem;
 	background-image: linear-gradient(
 		180deg,
 		transparent,
@@ -89,12 +109,14 @@ function Banner() {
 				backgroundImage: `url(${process.env.REACT_APP_IMDB_IMAGE_URL}${movie?.backdrop_path})`,
 			}}
 		>
-			<Title>{movie?.name || movie?.original_name}</Title>
-			<ButtonsWrapper>
-				<button>Play</button>
-				<button>My List</button>
-			</ButtonsWrapper>
-			<Description>{movie?.overview}</Description>
+			<section>
+				<Title>{movie?.name || movie?.original_name}</Title>
+				<Description>{movie?.overview}</Description>
+				<ButtonsWrapper>
+					<button className="play-btn">Play</button>
+					<button className="more-info-btn">More Info</button>
+				</ButtonsWrapper>
+			</section>
 			<Gradient></Gradient>
 		</Header>
 	);

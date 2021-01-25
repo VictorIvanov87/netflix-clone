@@ -11,8 +11,8 @@ import {
 
 function Jumbotron({ children, direction = 'row', ...restProps }) {
 	return (
-		<Item direction={direction}>
-			<Inner>{children}</Inner>
+		<Item>
+			<Inner direction={direction}>{children}</Inner>
 		</Item>
 	);
 }

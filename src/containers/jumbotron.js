@@ -5,7 +5,7 @@ import { Jumbotron, Banner, Navbar, Row } from '../components';
 
 function JumbotronContainer() {
 	return (
-		<div className="App">
+		<div>
 			<Navbar />
 			<Jumbotron.Container>
 				{jumboData.map((item) => {
@@ -40,4 +40,4 @@ function JumbotronContainer() {
 	);
 }
 
-export { JumbotronContainer };
+export default JumbotronContainer;

@@ -1,9 +1,10 @@
 import React from 'react';
-import { JumbotronContainer, FooterContainer } from './containers';
+import { JumbotronContainer, FooterContainer, FaqsContainer } from './containers';
 
 function App() {
 	return (
 		<div className="App">
+			<FaqsContainer />
 			<JumbotronContainer />
 			<FooterContainer />
 		</div>

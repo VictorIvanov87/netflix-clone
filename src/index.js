@@ -4,13 +4,17 @@ import App from './App';
 import { GlobalStyles } from './global-styles';
 // import reportWebVitals from './reportWebVitals';
 import axios from 'axios';
+import { firebase } from './lib/firebase.prod';
+import { FirebaseContext } from './context/firebase';
 
 axios.defaults.baseURL = process.env.REACT_APP_IMDB_BASE_URL;
 
 ReactDOM.render(
 	<React.StrictMode>
-		<GlobalStyles />
-		<App />
+		<FirebaseContext.Provider value={{ firebase }}>
+			<GlobalStyles />
+			<App />
+		</FirebaseContext.Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

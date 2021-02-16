@@ -9,8 +9,11 @@ import {
 	NavbarButton,
 } from './styles/Navbar';
 import { SIGN_IN } from '../../constants/routes';
+import { useAuthListener } from '../../hooks';
 
 function Navbar() {
+	const { user } = useAuthListener();
+
 	const [showNavbar, setShowNavbar] = useState(false);
 
 	const handleScroll = useCallback(() => {
@@ -33,8 +36,11 @@ function Navbar() {
 		<Nav className={showNavbar && 'black-background'}>
 			<NetflixLogo src={Logo} />
 			<NavbarProfile>
-				<NavbarAvatar src={Avatar} />
-				<NavbarButton to={SIGN_IN}>Sign In</NavbarButton>
+				{user ? (
+					<NavbarAvatar src={Avatar} />
+				) : (
+					<NavbarButton to={SIGN_IN}>Sign In</NavbarButton>
+				)}
 			</NavbarProfile>
 		</Nav>
 	);

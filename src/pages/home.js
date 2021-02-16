@@ -7,11 +7,11 @@ import {
 
 function Home() {
 	return (
-		<div>
+		<>
 			<FaqsContainer />
 			<JumbotronContainer />
 			<FooterContainer />
-		</div>
+		</>
 	);
 }
 

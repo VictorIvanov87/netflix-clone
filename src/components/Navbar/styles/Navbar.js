@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import {Link as ReactRouterLink} from 'react-router-dom';
 
 export const Nav = styled.div`
 	display: flex;
@@ -21,7 +22,32 @@ export const NetflixLogo = styled.img`
 	object-fit: contain;
 `;
 
-export const NetflixAvatar = styled.img`
+export const NavbarProfile = styled.div`
+	display: flex;
+`;
+
+
+export const NavbarAvatar = styled.img`
 	height: 32px;
+	margin: 0 10px;
 	object-fit: contain;
+`;
+
+export const NavbarButton = styled(ReactRouterLink)`
+	display: block;
+	background-color: #e50914;
+	width: 84px;
+	height: fit-content;
+	color: white;
+	border: 0;
+	font-size: 15px;
+	border-radius: 3px;
+	padding: 8px 17px;
+	cursor: pointer;
+	text-decoration: none;
+	box-sizing: border-box;
+
+	&:hover {
+		background-color: #f40612;
+	}
 `;

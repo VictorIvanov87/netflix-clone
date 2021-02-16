@@ -6,4 +6,6 @@ export { default as Movie } from './Movie';
 export { default as Navbar } from './Navbar';
 export { default as Row } from './Row';
 export { default as Footer } from './Footer';
+export { default as Form } from './Form';
+
 

@@ -1,7 +1,14 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import Logo from '../../assets/img/netflix-logo.png';
 import Avatar from '../../assets/img/netflix-avatar.png';
-import { Nav, NetflixAvatar, NetflixLogo } from './styles/Navbar';
+import {
+	Nav,
+	NetflixLogo,
+	NavbarAvatar,
+	NavbarProfile,
+	NavbarButton,
+} from './styles/Navbar';
+import { SIGN_IN } from '../../constants/routes';
 
 function Navbar() {
 	const [showNavbar, setShowNavbar] = useState(false);
@@ -25,7 +32,10 @@ function Navbar() {
 	return (
 		<Nav className={showNavbar && 'black-background'}>
 			<NetflixLogo src={Logo} />
-			<NetflixAvatar src={Avatar} />
+			<NavbarProfile>
+				<NavbarAvatar src={Avatar} />
+				<NavbarButton to={SIGN_IN}>Sign In</NavbarButton>
+			</NavbarProfile>
 		</Nav>
 	);
 }

@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import { useHistory } from 'react-router-dom';
 import { FirebaseContext } from '../context/firebase';
 import { Navbar, Footer, Form } from '../components';
-import { SIGN_UP, BROWSE } from '../constants/routes';
+import { HOME, SIGN_UP, BROWSE } from '../constants/routes';
 
 function SignIn() {
 	const [email, setEmail] = useState('');
@@ -59,6 +59,9 @@ function SignIn() {
 					This page is protected by Google reCAPTCHA to ensure you are not a
 					bot. Learn more.
 				</Form.TextSmall>
+				<Form.Text>
+					...or you can visit our <Form.Link to={HOME}>FAQ</Form.Link> section
+				</Form.Text>
 			</Form>
 			<Footer />
 		</>

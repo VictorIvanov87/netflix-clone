@@ -45,7 +45,7 @@ function Navbar() {
 			<NavbarProfile>
 				{user ? (
 					<>
-						<NavbarAvatar src={Avatar} />
+						<NavbarAvatar src={`./images/users/${user.photoURL}.png`} />
 						<NavbarButton
 							onClick={() => {
 								logOut();

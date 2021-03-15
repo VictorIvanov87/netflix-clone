@@ -33,10 +33,9 @@ export const NavbarAvatar = styled.img`
 	object-fit: contain;
 `;
 
-export const NavbarButton = styled(ReactRouterLink)`
+export const NavbarButton = styled.div`
 	display: block;
 	background-color: #e50914;
-	width: 84px;
 	height: fit-content;
 	color: white;
 	border: 0;

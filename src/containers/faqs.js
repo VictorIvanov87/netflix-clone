@@ -2,6 +2,7 @@ import React from 'react';
 import { Accordion } from '../components';
 import { OptForm } from '../components';
 import faqsData from '../fixtures/faqs.json';
+import * as ROUTES from '../constants/routes';
 
 const FaqsContainer = () => {
 	return (
@@ -15,8 +16,7 @@ const FaqsContainer = () => {
 			))}
 
 			<OptForm>
-				<OptForm.Input placeholder="Email Address"></OptForm.Input>
-				<OptForm.Button>Try Now</OptForm.Button>
+				<OptForm.Button href={ROUTES.SIGN_UP}>Try Now</OptForm.Button>
 				<OptForm.Break></OptForm.Break>
 				<OptForm.Text>
 					Ready To Watch? Enter your email to create or restart your membership.

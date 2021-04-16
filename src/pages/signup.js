@@ -42,7 +42,7 @@ function SignUp() {
 		<>
 			<Navbar />
 			<Form>
-				<Form.Title>Sign In</Form.Title>
+				<Form.Title>Sign Up</Form.Title>
 				{error && <Form.Error>{error}</Form.Error>}
 				<Form.Base onSubmit={handleSignUp} method="POST">
 					<Form.Input
